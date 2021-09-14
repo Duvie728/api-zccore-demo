@@ -11,7 +11,7 @@ env = Env()
 env.read_env()
 
 
-class EventCreateView(generics.GenericAPIView):
+class CreateEventView(generics.GenericAPIView):
     serializer_class = EventSerializer
 
     def post(self, request):
@@ -21,9 +21,9 @@ class EventCreateView(generics.GenericAPIView):
         # posting data to zuri core after validation
         # the organization_id would be dynamic; based on the request data
         event = serializer.data
-        plugin_id = env.str("plugin_id")
+        plugin_id =  "613f1c0dacf18b19ca945d23"
         payload = {
-            "plugin_id": plugin_id,
+            "plugin_id": "613f1c0dacf18b19ca945d23",
             "organization_id": "Global Link",
             "collection_name": "events",
             "bulk_write": False,
@@ -51,7 +51,7 @@ def event_list_view(request):
     if request.method == "GET":
         # getting data from zuri core
         # /data/read/{plugin_id}/{collection_name}/{organization_id}
-        url = 'https://zccore.herokuapp.com//data/read/613348c2bfba0a42d7f38e92/events/Global Link'
+        url = 'https://zccore.herokuapp.com//data/read/613f1c0dacf18b19ca945d23/events/Global Link'
 
         try:
             response = requests.get(url=url)
